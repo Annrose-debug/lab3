@@ -8,23 +8,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:lab3/main.dart';
+import 'package:lab3/main.dart'; // Make sure this import points to your main.dart file where RecipeApp is defined.
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('RecipeApp shows title Recipes', (WidgetTester tester) async {
+    // Build the RecipeApp and trigger a frame.
+    await tester.pumpWidget(const RecipeApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the title 'Recipes' appears in the app.
+    expect(find.text('Recipes'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Optionally test that a category like 'Beef' is found
+    expect(find.text('Beef'), findsOneWidget);
   });
 }
