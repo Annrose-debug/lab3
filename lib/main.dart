@@ -49,7 +49,7 @@ class RecipeHomePage extends StatelessWidget {
               ),
               // Item 2: Subtitle (left aligned)
               const Padding(
-                padding: EdgeInsets.only(left: 0),
+                padding: EdgeInsets.only(left: 170),
                 child: Text(
                   'Not sure about exactly which recipe you\'re looking for? Do a search, or dive into our most popular categories.',
                   textAlign: TextAlign.left,
@@ -60,6 +60,7 @@ class RecipeHomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 40), // Add space between subtitle and BY MEAT
               // Item 3: BY MEAT title (center)
               const Center(
                 child: Text(
@@ -74,6 +75,7 @@ class RecipeHomePage extends StatelessWidget {
               ),
               // Item 4: Meat images row
               buildMeatGrid(),
+              const SizedBox(height: 40),
               // Item 5: BY COURSE title (center)
               const Center(
                 child: Text(
@@ -88,6 +90,7 @@ class RecipeHomePage extends StatelessWidget {
               ),
               // Item 6: Course images row
               buildCourseGrid(),
+              const SizedBox(height: 40),
               // Item 7: BY DESSERT title (center)
               const Center(
                 child: Text(
@@ -102,6 +105,7 @@ class RecipeHomePage extends StatelessWidget {
               ),
               // Item 8: Dessert images row
               buildDessertGrid(),
+              const SizedBox(height: 40),
             ],
           ),
         ),
