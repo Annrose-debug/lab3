@@ -31,9 +31,11 @@ class RecipeHomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 60),
+              // Item 1: Main title (center)
               const Center(
                 child: Text(
                   'BROWSE CATEGORIES',
@@ -45,37 +47,61 @@ class RecipeHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              const Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text(
-                    'Not sure about exactly which recipe you\'re looking for? Do a search, or dive into our most popular categories.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                      height: 1.5,
-                    ),
+              // Item 2: Subtitle (left aligned)
+              const Padding(
+                padding: EdgeInsets.only(left: 0),
+                child: Text(
+                  'Not sure about exactly which recipe you\'re looking for? Do a search, or dive into our most popular categories.',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    height: 1.5,
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
-
-              buildSectionTitle('BY MEAT'),
-              const SizedBox(height: 30),
+              // Item 3: BY MEAT title (center)
+              const Center(
+                child: Text(
+                  'BY MEAT',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2.0,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+              // Item 4: Meat images row
               buildMeatGrid(),
-              const SizedBox(height: 50),
-
-              buildSectionTitle('BY COURSE'),
-              const SizedBox(height: 30),
+              // Item 5: BY COURSE title (center)
+              const Center(
+                child: Text(
+                  'BY COURSE',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2.0,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+              // Item 6: Course images row
               buildCourseGrid(),
-              const SizedBox(height: 50),
-
-              buildSectionTitle('BY DESSERT'),
-              const SizedBox(height: 30),
+              // Item 7: BY DESSERT title (center)
+              const Center(
+                child: Text(
+                  'BY DESSERT',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2.0,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+              // Item 8: Dessert images row
               buildDessertGrid(),
-              const SizedBox(height: 40),
             ],
           ),
         ),
@@ -83,105 +109,122 @@ class RecipeHomePage extends StatelessWidget {
     );
   }
 
-  Widget buildSectionTitle(String title) {
-    return Center(
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 2.0,
-          color: Colors.black87,
-        ),
-      ),
-    );
-  }
-
   Widget buildMeatGrid() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        buildCircularItemWithImage('BEEF', 'images/beef.jpeg'),
-        buildCircularItemWithImage('CHICKEN', 'images/chcicken.webp'),
-        buildCircularItemWithImage('PORK', 'images/pork.webp'),
-        buildCircularItemWithImage('SEAFOOD', 'images/seafood.jpeg'),
+        buildMeatItem('BEEF', 'images/beef.jpeg'),
+        buildMeatItem('CHICKEN', 'images/chcicken.webp'),
+        buildMeatItem('PORK', 'images/pork.webp'),
+        buildMeatItem('SEAFOOD', 'images/seafood.jpeg'),
       ],
     );
   }
 
   Widget buildCourseGrid() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        buildCircularItemWithImage('MAIN DISH', 'images/maindish.jpeg'),
-        buildCircularItemWithImage('SALAD', 'images/salad.webp'),
-        buildCircularItemWithImage('SIDE DISH', 'images/sidedish.webp'),
-        buildCircularItemWithImage('CROCKPOT', 'images/crockpot.webp'),
+        buildCourseItem('MAIN DISHES', 'images/maindish.jpeg'),
+        buildCourseItem('SALAD RECIPES', 'images/salad.webp'),
+        buildCourseItem('SIDE DISHES', 'images/sidedish.webp'),
+        buildCourseItem('CROCKPOT', 'images/crockpot.webp'),
       ],
     );
   }
 
   Widget buildDessertGrid() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        buildCircularItemWithImage('Ice Cream', 'images/icecream.jpg'),
-        buildCircularItemWithImage('Brownies', 'images/brownies.jpg'),
-        buildCircularItemWithImage('Pies', 'images/pie.jpg'),
-        buildCircularItemWithImage('Cookies', 'images/cookies.jpg'),
+        buildDessertItem('ICE CREAM', 'images/icecream.jpg'),
+        buildDessertItem('BROWNIES', 'images/brownies.jpg'),
+        buildDessertItem('PIES', 'images/pie.jpg'),
+        buildDessertItem('COOKIES', 'images/cookies.jpg'),
       ],
     );
   }
 
-  Widget buildCircularItemWithImage(String text, String imagePath) {
-    return Container(
-      width: 140,
-      height: 140,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            spreadRadius: 3,
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: ClipOval(
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.1),
-              ),
-              child: Center(
-                child: Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    shadows: [
-                      Shadow(
-                        offset: Offset(1, 1),
-                        blurRadius: 2,
-                        color: Colors.black54,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+  // For BY MEAT - text overlaid on center of image
+  Widget buildMeatItem(String text, String imagePath) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        CircleAvatar(
+          backgroundImage: AssetImage(imagePath),
+          radius: 70,
         ),
-      ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.3),
+            shape: BoxShape.circle,
+          ),
+          width: 140,
+          height: 140,
+          child: Center(
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                shadows: [
+                  Shadow(
+                    offset: Offset(1, 1),
+                    blurRadius: 2,
+                    color: Colors.black54,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // For BY COURSE - text below image
+  Widget buildCourseItem(String text, String imagePath) {
+    return Column(
+      children: [
+        CircleAvatar(
+          backgroundImage: AssetImage(imagePath),
+          radius: 70,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
+            color: Colors.black87,
+          ),
+        ),
+      ],
+    );
+  }
+
+  // For BY DESSERT - text below image
+  Widget buildDessertItem(String text, String imagePath) {
+    return Column(
+      children: [
+        CircleAvatar(
+          backgroundImage: AssetImage(imagePath),
+          radius: 70,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
+            color: Colors.black87,
+          ),
+        ),
+      ],
     );
   }
 }
