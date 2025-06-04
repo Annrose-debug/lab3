@@ -47,9 +47,10 @@ class RecipeHomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 40),
               // Item 2: Subtitle (left aligned)
               const Padding(
-                padding: EdgeInsets.only(left: 170),
+                padding: EdgeInsets.only(left: 0),
                 child: Text(
                   'Not sure about exactly which recipe you\'re looking for? Do a search, or dive into our most popular categories.',
                   textAlign: TextAlign.left,
@@ -73,6 +74,7 @@ class RecipeHomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 40),
               // Item 4: Meat images row
               buildMeatGrid(),
               const SizedBox(height: 40),
@@ -88,6 +90,7 @@ class RecipeHomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 40),
               // Item 6: Course images row
               buildCourseGrid(),
               const SizedBox(height: 40),
@@ -103,6 +106,7 @@ class RecipeHomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 40),
               // Item 8: Dessert images row
               buildDessertGrid(),
               const SizedBox(height: 40),
@@ -129,10 +133,10 @@ class RecipeHomePage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        buildCourseItem('MAIN DISHES', 'images/maindish.jpeg'),
-        buildCourseItem('SALAD RECIPES', 'images/salad.webp'),
-        buildCourseItem('SIDE DISHES', 'images/sidedish.webp'),
-        buildCourseItem('CROCKPOT', 'images/crockpot.webp'),
+        buildCourseItem('Main dish', 'images/maindish.jpeg'),
+        buildCourseItem('Salad recipes', 'images/salad.webp'),
+        buildCourseItem('Side dishes', 'images/sidedish.webp'),
+        buildCourseItem('Crockpot', 'images/crockpot.webp'),
       ],
     );
   }
@@ -141,10 +145,10 @@ class RecipeHomePage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        buildDessertItem('ICE CREAM', 'images/icecream.jpg'),
-        buildDessertItem('BROWNIES', 'images/brownies.jpg'),
-        buildDessertItem('PIES', 'images/pie.jpg'),
-        buildDessertItem('COOKIES', 'images/cookies.jpg'),
+        buildDessertItem('Ice cream', 'images/icecream.jpg'),
+        buildDessertItem('Brownies', 'images/brownies.jpg'),
+        buildDessertItem('Pies', 'images/pie.jpg'),
+        buildDessertItem('Cookies', 'images/cookies.jpg'),
       ],
     );
   }
@@ -156,11 +160,10 @@ class RecipeHomePage extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: AssetImage(imagePath),
-          radius: 70,
+          radius: 100,
         ),
         Container(
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.3),
             shape: BoxShape.circle,
           ),
           width: 140,
@@ -172,14 +175,7 @@ class RecipeHomePage extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
-                shadows: [
-                  Shadow(
-                    offset: Offset(1, 1),
-                    blurRadius: 2,
-                    color: Colors.black54,
-                  ),
-                ],
+                fontSize: 20,
               ),
             ),
           ),
@@ -194,7 +190,7 @@ class RecipeHomePage extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: AssetImage(imagePath),
-          radius: 70,
+          radius: 100,
         ),
         const SizedBox(height: 8),
         Text(
@@ -202,7 +198,7 @@ class RecipeHomePage extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 12,
+            fontSize: 20,
             color: Colors.black87,
           ),
         ),
@@ -216,7 +212,7 @@ class RecipeHomePage extends StatelessWidget {
       children: [
         CircleAvatar(
           backgroundImage: AssetImage(imagePath),
-          radius: 70,
+          radius: 100,
         ),
         const SizedBox(height: 8),
         Text(
@@ -224,7 +220,7 @@ class RecipeHomePage extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 12,
+            fontSize: 20,
             color: Colors.black87,
           ),
         ),
